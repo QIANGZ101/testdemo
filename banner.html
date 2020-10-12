@@ -4,8 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>滚动</title>
+    <link rel="stylesheet" href="./css/banner.css">
+    <script src="./js/jquery-1.10.1.js"></script>
+    <script>
+        $(function(){
+            var oUl = $("#banner ul");
+            var aLis = oUl.find("li");
+            var aBtns = $("#banner ol li");
+
+            var iNow = 0;
+
+            aBtns.click(function(){
+                iNow = $(this).index();
+                tab();
+            })
+
+            $("#banner").mouseenter(function(){
+                clearTimeout(timer);
+            }).mouseleave(function(){
+                timer = setInterval(function(){
+                    iNow++;
+                    tab();
+
+                },2000)
+            })
+
+            timer = setInterval(function(){
+                iNow++;
+                tab();
+
+            },2000)
+
+            function tab(){
+                
+                aBtns.attr("class","").eq(iNow).attr("class","active");
+
+                if(iNow == aBtns.size()){
+                    aBtns.eq(0).attr("class","active");
+                }
+
+                oUl.animate({
+                    left : iNow * -400
+                },200,function(){
+                    if(iNow == aBtns.size()){
+                        iNow = 0;
+                        oUl.css("left","0");
+                    }
+                })
+            }
+        })
+    </script>
 </head>
 <body>
-    
+    <div id="banner">
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+        <ul>
+            <li><a href="#"><img src="./imgs/IMG1.png" alt=""></a></li>
+            <li><a href="#"><img src="./imgs/IMG2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./imgs/IMG3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./imgs/IMG4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./imgs/IMG5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./imgs/IMG1.png" alt=""></a></li>
+        </ul>
+    </div>
 </body>
 </html>

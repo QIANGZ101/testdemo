@@ -1,0 +1,51 @@
+*{ margin:0; padding:0;}
+a{text-decoration:none; color:#999}
+ul,ol{ list-style:none;}
+img{display:block}
+
+#banner{
+    width: 400px;
+    height: 225px;
+    border: 1px solid gray;
+    margin: 50px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+#banner ol{
+    position: absolute;
+    right:5px;
+    bottom:5px;
+    z-index:1;
+}
+
+#banner ol li{
+    width: 20px;
+    height:20px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 20px;
+    float:left;
+    margin:0 2px;
+    cursor:pointer;
+}
+
+#banner ul{
+    width: 2400px;
+    height: 225px;
+    position:absolute;
+    left:0;
+}
+#banner ul li{
+    width: 400px;
+    float: left;
+}
+
+#banner ul li img{
+    width:100%;
+}
+
+.active{
+    background:gray;
+    color:white;
+}
